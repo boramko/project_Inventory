@@ -30,7 +30,9 @@ import { useDispatch } from 'react-redux';
       if(res.data.accessToken){
           window.localStorage.setItem("accessToken",res.data.accessToken);
           axios.defaults.headers.authorization = res.data.accessToken;
-          dispatch(SET_TOKEN(res.data.accessToken));
+          if(res.data.accessToken !== undefined){
+            dispatch(SET_TOKEN(res.data.accessToken));
+          }
       }else{
           window.localStorage.removeItem("accessToken");
           axios.defaults.headers.authorization = "";

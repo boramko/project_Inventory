@@ -1,5 +1,6 @@
+
 import styled from 'styled-components';
-import {CommonLayout3, InnerText, CommonLayoutAll} from '../../../../styles/common'
+import {CommonLayout3, InnerText, CommonLayoutAll,Background} from '../../../../styles/common'
 import { TextContainer } from '../../../../styleComponents/MainPageComponents/MainStyleDetail';
 import { fontsize, fontWeight } from '../../../../styles/theme';
 import TryJoin from './button/button';
@@ -11,10 +12,10 @@ const FourPage = () => {
     <ThirdPage/>
     <TextContainer>
       <TextInerBox>
-        <p1>실무자가 뽑은 1등 재고관리 앱</p1>
+        <P1>실무자가 뽑은 1등 재고관리 앱</P1>
       </TextInerBox>
       <InnerTextBox2>
-        <p2>재고관리, 이보다 편할수 없어요.</p2>
+        <P2>재고관리, 이보다 편할수 없어요.</P2>
       </InnerTextBox2>
         <TryJoin/>
     </TextContainer>
@@ -27,10 +28,23 @@ const TextInerBox = styled.div`
   ${CommonLayout3}
   top: 60px;
   left: 320px;
-  & p1{
+  & P1{
       ${InnerText}
   }
 `
+const P1 = styled.div`
+  width: 300px;
+  ${Background}
+  top: 200px;
+  left: 50px;
+`
+const P2 = styled.div`
+  width: 300px;
+  ${Background}
+  top: 200px;
+  left: 50px;
+`
+
 const InnerTextBox2 = styled.div`
   width: 500px;
   height: 60px;
@@ -38,7 +52,7 @@ const InnerTextBox2 = styled.div`
   right: 100px;
   ${CommonLayoutAll}
 
-  & p2{
+  & P2{
       width: 400px;
       height: 30px;
       margin-top: 10px;
@@ -46,4 +60,6 @@ const InnerTextBox2 = styled.div`
       font-size: ${fontsize[4]};
       font-weight: ${fontWeight[1]}; 
   }
+  
 `
+

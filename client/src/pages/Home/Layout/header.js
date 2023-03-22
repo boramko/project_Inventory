@@ -5,8 +5,7 @@ import HeaderLoginButton  from '../Button/button';
 import LogoutButton from '../Button/logoutboutton';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { SET_TOKEN } from '../../../redux/Auth';
-import { useDispatch,useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { device } from '../../../styles/media';
 
 const LayoutHeader = () => {
@@ -18,6 +17,7 @@ const LayoutHeader = () => {
   //  const [tokenKey, setToknkey] = useState();
 
   //   const token = window.localStorage.getItem("accessToken");
+  ///state.authToken
       const { accessToken } = useSelector(state => state.authToken);
       console.log("accessToken",accessToken);
 
