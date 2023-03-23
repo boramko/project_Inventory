@@ -5,6 +5,7 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux';
 import thunkMiddleware from 'redux-thunk';
+import axios from 'axios';
 
 const reducers = combineReducers({
     authToken: tokenReducer,
@@ -25,4 +26,16 @@ const store = configureStore({
     }).concat(thunkMiddleware),
 });
 
-export default store; 
+axios.interceptors.request.use(function (config) {
+    const { authToken } = store.getState();
+    const headers = {
+        'Authorization': `${authToken.accessToken}`,
+        'Content-Type': 'application/json'
+    };
+    config.headers = headers;
+    return config;
+}, function (error) {
+    return Promise.reject(error);
+});
+
+export default store;

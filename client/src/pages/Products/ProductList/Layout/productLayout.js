@@ -4,37 +4,22 @@ import { useState , useEffect } from 'react';
 import styled from 'styled-components';
 import { ProductListContainer, ProductHeader,Title,ProductBox, InputBox, InnerBox, ItemBox, InnerItemBox,TextBox} from '../../../../styleComponents/ProductPageComponent/productDetail/ProductDetailLayout';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+//import productAPI from "../../../../apis/commonAxios";
 import axios from 'axios';
 
-const ProductList = () => {
 
-  // const [product, setProduct] = useState([
-  //   {
-  //     id:1,
-  //     text:"바닐라시럽"
-  //   },
-  //   {
-  //     id:2,
-  //     text:"유리컵"
-  //   },
-  //   {
-  //     id:3,
-  //     text:"원두"
-  //   }
-  // ]);
+const ProductList = () => {
 
   const [product, setProductInfo] = useState([{}]);
 
   const [search, setSearch] = useState("");
   
-  
+  //const { accessToken } = useSelector(state => state.authToken);
 
   useEffect(() =>{
-    const headers = {
-      'authorization' : localStorage.getItem('accessToken')
-    }
- 		axios.post('http://localhost:3001/api/product/getProduct',{}, {headers
- 		}).then(res => {
+ 		axios.get('http://localhost:3001/api/product/getProduct',{}
+    ).then(res => {
        setProductInfo([...res.data.result]);
  	  });
   },[]);
